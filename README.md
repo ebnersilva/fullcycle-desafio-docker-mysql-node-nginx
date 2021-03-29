@@ -30,9 +30,9 @@
 
 In this challenge you will put into practice what we have learned in relation to the use of nginx as a reverse proxy. The main idea is that when a user accesses nginx, he will make a call to our node.js application. This application in turn will add a record to our mysql database, registering a name in the people table.
 
-The return of the node.js application to nginx should be:
+The return of the node.js application to nginx should be a html element h1 with content:
 
-<h1> Full Cycle Rocks! </h1>
+- Full Cycle Rocks!
 
 - List of names registered in the database.
 
