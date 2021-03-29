@@ -16,7 +16,5 @@ RUN wget https://github.com/jwilder/dockerize/releases/download/$DOCKERIZE_VERSI
 # Libero a porta 3000 para que outros containers consigam enxergar essa porta
 EXPOSE 3000
 
-RUN npm install
-
 # Rodamos esse comando para subir a aplicação
 # CMD ["node", "index.js"]

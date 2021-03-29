@@ -9,6 +9,4 @@ COPY . .
 # Libero a porta 3000 para que outros containers consigam enxergar essa porta
 EXPOSE 3000
 
-RUN npm install
-
 # CMD ["node", "index.js"]
