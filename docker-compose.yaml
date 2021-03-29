@@ -1,0 +1,52 @@
+version: '3'
+
+services:
+  nginx:
+    build:
+      context: ./nginx
+      dockerfile: Dockerfile.prod
+    image: ebnersilva/desafio-nginx:prod
+    container_name: nginx
+    networks:
+      - node
+    ports:
+        - "8080:80"
+    depends_on: 
+      - app
+  
+  app:
+    build:
+      context: node
+    container_name: app
+    entrypoint: dockerize -wait tcp://db:3306 -timeout 120s docker-entrypoint.sh
+    command: bash -c "node index.js"
+    networks:
+      - node
+    volumes:
+      - ./node:/usr/src/app
+    tty: true
+    depends_on:
+      - db
+      
+  db:
+    image: mysql:5.7
+    command: --innodb-use-native-aio=0
+    container_name: db
+    restart: always
+    tty: true
+    volumes:
+      - ./mysql:/var/lib/mysql
+      - ./database/dump.sql:/docker-entrypoint-initdb.d/dump.sql
+    environment:
+      - MYSQL_DATABASE=nodedb
+      - MYSQL_ROOT_PASSWORD=root
+    networks: 
+      - node
+
+# Names our volume
+volumes:
+  mysql:
+  
+networks:
+  node:
+    driver: bridge

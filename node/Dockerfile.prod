@@ -1,0 +1,14 @@
+FROM node:15
+
+# Digo qual vai ser o diretório de trabalho la dentro do container
+WORKDIR /usr/src/app
+
+# Copio tudo que está na pasta atual para o workdir do meu build
+COPY . .
+
+# Libero a porta 3000 para que outros containers consigam enxergar essa porta
+EXPOSE 3000
+
+RUN npm install
+
+# CMD ["node", "index.js"]
