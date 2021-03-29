@@ -22,6 +22,8 @@
 ## :memo: How to use?
 
 - **`git clone https://github.com/ebnersilva/fullcycle-desafio-docker-mysql-node-nginx`**
+- **`cd cloned directory`**
+- **`docker compose up -d`**
 - **`😄 enjoy 😄`**
 
 ## :rocket: About the challenge
